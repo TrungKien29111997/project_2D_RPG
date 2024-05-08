@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HeathBar : MonoBehaviour
 {
     [SerializeField] Image image;
-    [SerializeField] Character character;
+    Character _character;
     GameObject _camera;
     float maxHP;
 
@@ -17,15 +17,24 @@ public class HeathBar : MonoBehaviour
 
     public void Update()
     {
-        if (maxHP == 0) maxHP = character.hp;
+        if (maxHP == 0) maxHP = _character.hp;
         transform.forward = _camera.transform.forward;
-        image.fillAmount = Mathf.Lerp(image.fillAmount, character.hp / maxHP, Time.deltaTime * 2f);
+        image.fillAmount = Mathf.Lerp(image.fillAmount, _character.hp / maxHP, Time.deltaTime * 2f);
     }
 
     public void OnInit()
     {
         image.fillAmount = 1;
         _camera = GameObject.FindGameObjectWithTag("MainCamera");
+        _character = GetComponentInParent<Character>();
+        if (_character.gameObject.CompareTag("Player"))
+        {
+            image.color = Color.green;
+        }
+        else if (_character.gameObject.CompareTag("Enemy"))
+        {
+            image.color = Color.red;
+        }
     }
 
     public void OnDespawn()

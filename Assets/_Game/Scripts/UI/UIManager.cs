@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     [SerializeField] TextMeshProUGUI textMesh;
+    [SerializeField] GameObject heathBar;
     void Awake()
     {
         instance = this;
@@ -16,5 +17,10 @@ public class UIManager : MonoBehaviour
     public void SetCoin(int coin)
     {
         textMesh.text = coin.ToString();
+    }
+
+    public void SpawnHealthBar(Transform parent, float offset)
+    {
+        Instantiate(heathBar, parent.position + new Vector3(0, offset, 0), Quaternion.identity, parent);
     }
 }

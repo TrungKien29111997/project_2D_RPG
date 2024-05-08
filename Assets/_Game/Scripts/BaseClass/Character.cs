@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
     public virtual void Start()
     {
         OnInit();
+        UIManager.instance.SpawnHealthBar(transform, 0f);
     }
 
     public virtual void OnInit()
