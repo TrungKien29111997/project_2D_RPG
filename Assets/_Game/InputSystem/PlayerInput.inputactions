@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "Jump",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "77771a93-17a9-4673-b3c5-4dcbc50bcb55",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -25,20 +25,20 @@
                 },
                 {
                     "name": "Attack",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "85d7a928-a034-497c-84f0-fa745138bb49",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "initialStateCheck": true
                 },
                 {
                     "name": "Shoot",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "63438ec7-7c04-48c3-bb60-1f56fe71401e",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": true
                 }
             ],
@@ -166,30 +166,8 @@
                 },
                 {
                     "name": "",
-                    "id": "d6882406-4090-4716-9e7c-925fdd9e8114",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5a229c3f-c8e6-40a3-b626-230d6c98445c",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6e723350-c98f-46a4-84bf-d027b62f5d3d",
-                    "path": "<Gamepad>/dpad/up",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -5,49 +5,35 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
+	PlayerInput playerInput;
+
 	[Header("Character Input Values")]
 	public Vector2 move;
 	public bool jump;
 	public bool attack;
 	public bool shoot;
 
-	public void OnMove(InputValue value)
+	void Awake()
 	{
-		MoveInput(value.Get<Vector2>());
+		playerInput = new PlayerInput();
 	}
 
-	public void OnJump(InputValue value)
-	{
-		JumpInput(value.isPressed);
-	}
-
-	public void OnAttack(InputValue value)
-	{
-		AttackInput(value.isPressed);
-	}
-
-	public void OnShoot(InputValue value)
+    private void OnEnable()
     {
-		ShootInput(value.isPressed);
+		playerInput.Enable();
     }
 
-
-	public void MoveInput(Vector2 newMoveDirection)
-	{
-		move = newMoveDirection;
-	}
-	public void JumpInput(bool newJumpState)
-	{
-		jump = newJumpState;
-	}
-	public void AttackInput(bool newAttackState)
-	{
-		attack = newAttackState;
-	}
-
-	public void ShootInput(bool newShootState)
+    private void OnDisable()
     {
-		shoot = newShootState;
+		playerInput.Disable();
     }
+
+    private void Update()
+    {
+		move = playerInput.Movement.Move.ReadValue<Vector2>();
+		jump = playerInput.Movement.Jump.triggered;
+		attack = playerInput.Movement.Attack.triggered;
+		shoot = playerInput.Movement.Shoot.triggered;
+	}
 }
 

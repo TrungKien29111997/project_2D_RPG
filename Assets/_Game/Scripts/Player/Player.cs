@@ -59,7 +59,7 @@ public class Player : Character
         UIManager.instance.SetCoin(coin);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (isDead)
         {
@@ -110,11 +110,6 @@ public class Player : Character
             return;
         }
 
-        if (_input.shoot)
-        {
-            Shoot();
-        }
-
         if (isGround)
         {
             if (_input.jump)
@@ -145,6 +140,11 @@ public class Player : Character
             {
                 Move();
             }
+        }
+
+        if (_input.shoot)
+        {
+            Shoot();
         }
     }
     public void ExitOnGroundState()
@@ -183,7 +183,7 @@ public class Player : Character
 
     void Move()
     {
-        _rigidbody2D.velocity = new Vector2(_input.move.x * Time.fixedDeltaTime * 100f * speed , _rigidbody2D.velocity.y);
+        _rigidbody2D.velocity = new Vector2(_input.move.x * speed , _rigidbody2D.velocity.y);
         transform.localRotation = Quaternion.Euler(0, _input.move.x > 0 ? 0 : 180, 0);
     }
 
